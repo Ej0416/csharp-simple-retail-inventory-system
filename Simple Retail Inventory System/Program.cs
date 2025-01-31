@@ -10,7 +10,7 @@ namespace Simple_Retail_Inventory_System
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("test");
+            Console.WriteLine("test as");
             Console.ReadLine();
         }
     }

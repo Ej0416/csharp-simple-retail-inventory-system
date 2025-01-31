@@ -34,7 +34,6 @@ namespace Simple_Retail_Inventory_System
                     $"{Spaces(' ', 22)}$ {item.Value.ProductPrice}" +
                     $"{Spaces(' ', 22)}{item.Value.ProductQuantity}{Spaces(' ', 10)}");
             }
-
         }
 
         //function to edit product data in inventory
@@ -77,6 +76,15 @@ namespace Simple_Retail_Inventory_System
             {
                 Console.WriteLine("No product found associated with given id.");
             }
+        }
+
+        //fucntion to print total curent value of products in inventory
+        public void TotalValue() {
+            double totalValue = 0;
+            foreach (var item in inventory) {
+                totalValue += (item.Value.ProductPrice * item.Value.ProductQuantity); 
+            }
+            Console.WriteLine($"\n{totalValue}");
         }
 
         //check if inventory have contents

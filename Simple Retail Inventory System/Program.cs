@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simple_Retail_Inventory_System
 {
-    internal class Program:Utility
+    internal class Program : Utility
     {
         static void Main(string[] args)
         {
@@ -24,7 +24,8 @@ namespace Simple_Retail_Inventory_System
                 {
                     Console.WriteLine("\n...Inventory is curently empty...");
                 }
-                else {
+                else
+                {
                     Console.WriteLine($"\n{inventoryManager.Spaces('-', 40)}Inventory Content{inventoryManager.Spaces('-', 40)}");
                     inventoryManager.Show();
                 }
@@ -47,7 +48,7 @@ namespace Simple_Retail_Inventory_System
                 {
                     //accessing functions base on user input via switch case
                     switch (optionNum)
-                    {   
+                    {
                         //for adding product to inventory dictionary
                         case 1:
                             Console.WriteLine("\nadding product data\n");
@@ -69,11 +70,12 @@ namespace Simple_Retail_Inventory_System
                         // for printing total value of products in inventory
                         case 4:
                             Console.WriteLine("total inventory value");
+                            inventoryManager.TotalValue();
                             break;
                         //end programm trigger
-                        default:                        
+                        default:
                             Console.WriteLine("good bye");
-                            isLooping = options.Equals("5") ? false : true;
+                            isLooping = !options.Equals("5");
                             break;
                     }
                 }
@@ -83,7 +85,7 @@ namespace Simple_Retail_Inventory_System
         // product data creation
         static Product CreateProduct(int id)
         {
-            
+
             Product product = new Product();
             try
             {
@@ -92,7 +94,7 @@ namespace Simple_Retail_Inventory_System
                 product.ProductPrice = Convert.ToDouble(UserInput("Product price: "));
                 product.ProductQuantity = Convert.ToInt32(UserInput("Product quantity: "));
             }
-            catch (FormatException )
+            catch (FormatException)
             {
                 Console.WriteLine("\nError: Invalid format input...");
             }
@@ -102,6 +104,6 @@ namespace Simple_Retail_Inventory_System
             }
             return product;
         }
-   
+
     }
 }

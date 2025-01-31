@@ -50,18 +50,21 @@ namespace Simple_Retail_Inventory_System
                     {   
                         //for adding product to inventory dictionary
                         case 1:
-                            Console.WriteLine("adding product data\n");
+                            Console.WriteLine("\nadding product data\n");
                             inventoryManager.AddProduct(keyId, CreateProduct(keyId));
                             keyId += 1;
                             break;
                         // for editing product data
                         case 2:
-                            Console.WriteLine("editing product data");
-                            
+                            Console.WriteLine("\nediting product data\n");
+                            int.TryParse(UserInput("Enter Product id to edit: "), out int idToEdit);
+                            inventoryManager.EditProduct(idToEdit);
                             break;
                         //for removing product data
                         case 3:
-                            Console.WriteLine("remove product data");
+                            Console.WriteLine("\nremove product data\n");
+                            int.TryParse(UserInput("Enter Product id to remove: "), out int idToRemove);
+                            inventoryManager.RemoveProduct(idToRemove);
                             break;
                         // for printing total value of products in inventory
                         case 4:

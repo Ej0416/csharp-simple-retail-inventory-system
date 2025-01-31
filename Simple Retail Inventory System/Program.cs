@@ -12,10 +12,12 @@ namespace Simple_Retail_Inventory_System
         {
             //change the title of console window
             Console.Title = "Simple Retail Inventory System";
+            //initialize inventory m,anager class to be access its functions locally
             InventoryManager inventoryManager = new InventoryManager();
 
             //initiate while loop for the programm process
             bool isLooping = true;
+            //keyId use to assign unique id to itms in the dictionary
             int keyId = 0;
             while (isLooping == true)
             {
@@ -84,8 +86,9 @@ namespace Simple_Retail_Inventory_System
         // product data creation
         static Product CreateProduct(int id)
         {
-
+            //initialized p[rodut class inorder to make an instace
             Product product = new Product();
+            //catch exceprtion escpecially format exception
             try
             {
                 product.ProductId = id;

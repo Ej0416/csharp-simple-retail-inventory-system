@@ -60,7 +60,7 @@ namespace Simple_Retail_Inventory_System
             }
             else
             {
-                Console.WriteLine("No product found associated with given id.");
+                Console.WriteLine($"{Spaces('.', 25)}No product found associated with given id{Spaces('.', 25)}");
             }
         }
 
@@ -70,11 +70,11 @@ namespace Simple_Retail_Inventory_System
             if (inventory.ContainsKey(id))
             {
                 inventory.Remove(id);
-                Console.WriteLine("Product remove from inventory");
+                Console.WriteLine($"\n{Spaces('.', 25)}Product succesfully remove from inventory{Spaces('.', 25)}\n");
             }
             else
             {
-                Console.WriteLine("No product found associated with given id.");
+                Console.WriteLine($"\n{Spaces('.', 25)}No product found associated with given id{Spaces('.', 25)}\n");
             }
         }
 
@@ -84,7 +84,8 @@ namespace Simple_Retail_Inventory_System
             foreach (var item in inventory) {
                 totalValue += (item.Value.ProductPrice * item.Value.ProductQuantity); 
             }
-            Console.WriteLine($"\n{totalValue}");
+            Console.WriteLine($"\n{Spaces('-', 20)}Total Inventory Value {Spaces('=', 1)} ${totalValue}");
+
         }
 
         //check if inventory have contents

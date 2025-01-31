@@ -17,7 +17,7 @@ namespace Simple_Retail_Inventory_System
         }
 
         //helper function to add  lines
-        public string Spaces(char content, int count)
+        public static string Spaces(char content, int count)
         {
             string space = new string(content, count);
             return space;

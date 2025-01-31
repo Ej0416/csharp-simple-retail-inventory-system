@@ -22,11 +22,11 @@ namespace Simple_Retail_Inventory_System
                 //check if inventory is empty and display message or current inventory content
                 if (inventoryManager.IsEmpty() == true)
                 {
-                    Console.WriteLine("\n...Inventory is curently empty...");
+                    Console.WriteLine($"\n{Spaces('.', 40)}Inventory is curently empty{Spaces('.', 40)}");
                 }
                 else
                 {
-                    Console.WriteLine($"\n{inventoryManager.Spaces('-', 40)}Inventory Content{inventoryManager.Spaces('-', 40)}");
+                    Console.WriteLine($"\n{Spaces('-', 40)}Inventory Content{Spaces('-', 40)}");
                     inventoryManager.Show();
                 }
 
@@ -51,30 +51,29 @@ namespace Simple_Retail_Inventory_System
                     {
                         //for adding product to inventory dictionary
                         case 1:
-                            Console.WriteLine("\nadding product data\n");
+                            Console.WriteLine($"\n{Spaces('-', 40)}Adding Product Data{Spaces('-', 40)}\n");
                             inventoryManager.AddProduct(keyId, CreateProduct(keyId));
                             keyId += 1;
                             break;
                         // for editing product data
                         case 2:
-                            Console.WriteLine("\nediting product data\n");
+                            Console.WriteLine($"\n{Spaces('-', 40)}Editing Product Data{Spaces('-', 40)}\n");
                             int.TryParse(UserInput("Enter Product id to edit: "), out int idToEdit);
                             inventoryManager.EditProduct(idToEdit);
                             break;
                         //for removing product data
                         case 3:
-                            Console.WriteLine("\nremove product data\n");
+                            Console.WriteLine($"\n{Spaces('-', 40)}remove product data{Spaces('-', 40)}\n");
                             int.TryParse(UserInput("Enter Product id to remove: "), out int idToRemove);
                             inventoryManager.RemoveProduct(idToRemove);
                             break;
                         // for printing total value of products in inventory
                         case 4:
-                            Console.WriteLine("total inventory value");
                             inventoryManager.TotalValue();
                             break;
                         //end programm trigger
                         default:
-                            Console.WriteLine("good bye");
+                            Console.WriteLine($"\n{Spaces('-', 40)}GOOD BYE{Spaces('-', 40)}");
                             isLooping = !options.Equals("5");
                             break;
                     }

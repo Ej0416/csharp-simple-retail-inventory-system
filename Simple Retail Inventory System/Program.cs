@@ -10,8 +10,23 @@ namespace Simple_Retail_Inventory_System
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("test 2");
+            Product product = CreateProduct();
+            Console.WriteLine(product);
+
             Console.ReadLine();
+        }
+
+        // product data creation
+        static Product CreateProduct()
+        {
+            Product product = new Product
+            {
+                ProductId = 1,
+                ProductName = "Test",
+                ProductPrice = 10,
+                ProductQuantity = 100,
+            };
+            return product;
         }
     }
 }

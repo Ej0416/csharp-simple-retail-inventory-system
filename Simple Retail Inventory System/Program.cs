@@ -10,19 +10,21 @@ namespace Simple_Retail_Inventory_System
     {
         static void Main(string[] args)
         {
-
-            InventoryManager inventoryManager = new InventoryManager();
-            int inventoryId = 0;
+            Console.Title = "Simple Retail Inventory System";
             bool isLooping = true;
-
-            while (isLooping)
+            while (isLooping == true)
             {
-               
-                inventoryManager.AddProduct(inventoryId, CreateProduct(inventoryId));
-            }
+                string options = UserInput("\nSelect Options:\n  " +
+                    "[0] - view inventory\n  " +
+                    "[1] - add product\n  " +
+                    "[2] - edit product\n  " +
+                    "[3] - remove product\n  " +
+                    "[4] - get total value \n  " +
+                    "[5] - exit " +
+                    "\n\nEnter: ");
 
-            inventoryManager.Show();
-            Console.ReadLine();
+                isLooping = options.Equals("5") ? false : true;
+            }
         }
 
         // product data creation
@@ -39,7 +41,7 @@ namespace Simple_Retail_Inventory_System
         }
 
         //helper function for getting user input
-        static string UserInput(string msg) {
+        static string UserInput(string msg = default) {
             Console.Write(msg);
             string input = Console.ReadLine();
             return input;

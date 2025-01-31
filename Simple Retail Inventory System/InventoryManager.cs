@@ -18,8 +18,13 @@ namespace Simple_Retail_Inventory_System
         public void Show() {
             for (int i = 0; i < inventory.Count; i++)
             {
-                Console.WriteLine($"\n{inventory[i]}\n");
+                Console.WriteLine($"\n{inventory[i]}");
             }
+        }
+
+        public string IsEmpty() {
+            bool isEmpty = inventory.Count() == 0;
+            return $"is dictionary empty? {isEmpty}";
         }
     }
 }

@@ -10,10 +10,16 @@ namespace Simple_Retail_Inventory_System
     {
         static void Main(string[] args)
         {
+            //change the title of console window
             Console.Title = "Simple Retail Inventory System";
+            InventoryManager inventoryManager = new InventoryManager();
+
+            //initiate while loop for the programm process
             bool isLooping = true;
+            int keyId = 0;
             while (isLooping == true)
             {
+                //user input selection
                 string options = UserInput("\nSelect Options:\n  " +
                     "[0] - view inventory\n  " +
                     "[1] - add product\n  " +
@@ -23,28 +29,78 @@ namespace Simple_Retail_Inventory_System
                     "[5] - exit " +
                     "\n\nEnter: ");
 
-                isLooping = options.Equals("5") ? false : true;
+                bool isValid = int.TryParse(options, out int optionNum);
+                if (!isValid)
+                {
+                    Console.WriteLine("Invalid input please try again");
+                }
+                else
+                {
+                    //accessing functions base on user input via switch case
+                    switch (optionNum)
+                    {
+                        //for showing inventory content
+                        case 0:
+                            Console.WriteLine("viewing inventory");
+                            inventoryManager.Show();
+                            break;
+                        //for adding product to inventory dictionary
+                        case 1:
+                            Console.WriteLine($"adding product data");
+                            inventoryManager.AddProduct(keyId, CreateProduct(keyId));
+                            keyId += 1;
+                            break;
+                        // for editing product data
+                        case 2:
+                            Console.WriteLine("editing product data");
+                            break;
+                        //for removing product data
+                        case 3:
+                            Console.WriteLine("remove product data");
+                            break;
+                        // for printing total value of products in inventory
+                        case 4:
+                            Console.WriteLine("total inventory value");
+                            break;
+                        //end programm trigger
+                        default:                        
+                            Console.WriteLine("good bye");
+                            isLooping = options.Equals("5") ? false : true;
+                            break;
+                    }
+                }
             }
         }
 
         // product data creation
         static Product CreateProduct(int id)
         {
-            Product product = new Product
+            
+            Product product = new Product();
+            try
             {
-                ProductId = id,
-                ProductName = "Test",
-                ProductPrice = 10,
-                ProductQuantity = 100,
-            };
+                product.ProductId = id;
+                product.ProductName = UserInput("Product name: ");
+                product.ProductPrice = Convert.ToDouble(UserInput("Product price: "));
+                product.ProductQuantity = Convert.ToInt32(UserInput("Product quantity: "));
+            }
+            catch (FormatException )
+            {
+                Console.WriteLine("\nError: Invalid format input...");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"\nError: {e}");
+            }
             return product;
         }
 
         //helper function for getting user input
-        static string UserInput(string msg = default) {
+        static string UserInput(string msg = default)
+        {
             Console.Write(msg);
             string input = Console.ReadLine();
             return input;
-        } 
+        }
     }
 }

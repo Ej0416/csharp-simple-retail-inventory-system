@@ -19,9 +19,18 @@ namespace Simple_Retail_Inventory_System
             int keyId = 0;
             while (isLooping == true)
             {
+                //check if inventory is empty and display message or current inventory content
+                if (inventoryManager.IsEmpty() == true)
+                {
+                    Console.WriteLine("\n...Inventory is curently empty...");
+                }
+                else {
+                    Console.WriteLine($"\n{inventoryManager.Spaces('-', 40)}Inventory Content{inventoryManager.Spaces('-', 40)}");
+                    inventoryManager.Show();
+                }
+
                 //user input selection
                 string options = UserInput("\nSelect Options:\n  " +
-                    "[0] - view inventory\n  " +
                     "[1] - add product\n  " +
                     "[2] - edit product\n  " +
                     "[3] - remove product\n  " +
@@ -38,21 +47,17 @@ namespace Simple_Retail_Inventory_System
                 {
                     //accessing functions base on user input via switch case
                     switch (optionNum)
-                    {
-                        //for showing inventory content
-                        case 0:
-                            Console.WriteLine("viewing inventory");
-                            inventoryManager.Show();
-                            break;
+                    {   
                         //for adding product to inventory dictionary
                         case 1:
-                            Console.WriteLine($"adding product data");
+                            Console.WriteLine("adding product data\n");
                             inventoryManager.AddProduct(keyId, CreateProduct(keyId));
                             keyId += 1;
                             break;
                         // for editing product data
                         case 2:
                             Console.WriteLine("editing product data");
+                            
                             break;
                         //for removing product data
                         case 3:

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simple_Retail_Inventory_System
 {
-    internal class Program
+    internal class Program:Utility
     {
         static void Main(string[] args)
         {
@@ -99,13 +99,6 @@ namespace Simple_Retail_Inventory_System
             }
             return product;
         }
-
-        //helper function for getting user input
-        static string UserInput(string msg = default)
-        {
-            Console.Write(msg);
-            string input = Console.ReadLine();
-            return input;
-        }
+   
     }
 }

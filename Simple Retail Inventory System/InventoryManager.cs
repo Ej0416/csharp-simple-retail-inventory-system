@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simple_Retail_Inventory_System
 {
-    internal class InventoryManager
+    internal class InventoryManager:Utility
     {
         //set to readonly and private to prevent accidental changes to the dictionary
         private readonly Dictionary<int, Product> inventory = new Dictionary<int, Product>();
@@ -19,9 +19,9 @@ namespace Simple_Retail_Inventory_System
         //print curent conent of inventory
         public void Show() {
             Console.WriteLine($"\n{Spaces(' ',5)}Product id{Spaces(' ', 10)}" +
-                $"Prodcut name{Spaces(' ', 15)}Product price{Spaces(' ', 10)}" +
+                $"Product name{Spaces(' ', 15)}Product price{Spaces(' ', 10)}" +
                 $"Product quantity");
-
+            
             Console.WriteLine(Spaces('-', 98));
             for (int i = 0; i < inventory.Count; i++)
             {
@@ -29,6 +29,15 @@ namespace Simple_Retail_Inventory_System
                     $"{Spaces(' ', 18)}{inventory[i].ProductName}" +
                     $"{Spaces(' ', 22)}$ {inventory[i].ProductPrice}" +
                     $"{Spaces(' ', 22)}{inventory[i].ProductQuantity}{Spaces(' ', 10)}");
+            } 
+        }
+
+        //function to edit product data in inventory
+        public void EditProduct(int id) {
+            if (inventory.ContainsKey(id)) { 
+                
+            } else {
+                Console.WriteLine("No product found associated with given id.");
             }
         }
 
@@ -36,12 +45,6 @@ namespace Simple_Retail_Inventory_System
         public bool IsEmpty() {
             bool isEmpty = inventory.Count() == 0;
             return isEmpty;
-        }
-
-        //helper function to add  lines
-        public string Spaces(char content, int count) {
-            string space = new string(content,count);
-            return space;
         }
     }
 }
